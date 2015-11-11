@@ -22,6 +22,8 @@
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
+    @yield('style')
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="http://placehold.it/300x300" alt="">
+                    <img class="img-responsive" src="{{ asset('assets/images/tutelage-unity-small.png') }}" alt="">
                     <div class="intro-text">
                         <span class="name">Start Bootstrap</span>
                         <hr class="star-light">
@@ -93,6 +95,10 @@
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
 
+    <!-- Vuejs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.7/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.1.17/vue-resource.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
@@ -103,6 +109,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('assets/js/freelancer.js') }}"></script>
+
+    @yield('script')
 
 </body>
 

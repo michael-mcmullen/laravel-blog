@@ -18,6 +18,46 @@ Route::group(['prefix' => 'blog'], function() {
     );
 });
 
+// Administration
+Route::group(['prefix' => 'administration'], function() {
+    Route::get('/', array(
+        'as'   => 'administration.index',
+        'uses' => 'AdministrationController@index')
+    );
+
+    // Blog
+    Route::group(['prefix' => 'blog', 'namespace' => 'Admin'], function() {
+
+        Route::get('/add', array(
+            'as'   => 'administration.blog.add',
+            'uses' => 'BlogController@add')
+        );
+        Route::get('/edit/{id}', array(
+            'as'   => 'administration.blog.edit',
+            'uses' => 'BlogController@edit')
+        );
+
+        Route::post('/insert', array(
+            'as'   => 'administration.blog.insert',
+            'uses' => 'BlogController@insert')
+        );
+        Route::post('/update', array(
+            'as'   => 'administration.blog.update',
+            'uses' => 'BlogController@update')
+        );
+
+        Route::get('/delete/{id}', array(
+            'as'   => 'administration.blog.delete',
+            'uses' => 'BlogController@delete')
+        );
+
+        Route::post('/slug', array(
+            'as'   => 'administration.blog.slug',
+            'uses' => 'BlogController@slug')
+        );
+    });
+});
+
 
 
 // Authenication

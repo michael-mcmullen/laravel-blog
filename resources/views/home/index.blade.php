@@ -20,7 +20,7 @@
                                 {{ $post->title }}
                             </a>
                         </h4>
-                        {{ str_limit($post->content, 300) }}
+                        {{ str_limit(strip_tags($post->content), 300) }}
                     </div>
                 </div>
             @endforeach

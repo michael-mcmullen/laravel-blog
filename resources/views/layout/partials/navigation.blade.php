@@ -1,8 +1,8 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
+        <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -25,8 +25,8 @@
                     <a href="#about">About</a>
                 </li>
                 @if(Auth::id())
-                    <li class="btn btn-danger btn-xs">
-                        <a href="{{ URL::route('auth.logout') }}" class="">Administration</a>
+                    <li class="btn-success">
+                        <a href="{{ URL::route('administration.index') }}" class="">Administration</a>
                     </li>
                 @endif
             </ul>
