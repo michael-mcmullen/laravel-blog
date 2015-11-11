@@ -50,6 +50,14 @@ Route::group(['prefix' => 'administration'], function() {
             'as'   => 'administration.blog.delete',
             'uses' => 'BlogController@delete')
         );
+        Route::get('/publish/{id}', array(
+            'as'   => 'administration.blog.publish',
+            'uses' => 'BlogController@publish')
+        );
+        Route::get('/unpublish/{id}', array(
+            'as'   => 'administration.blog.unpublish',
+            'uses' => 'BlogController@unpublish')
+        );
 
         Route::post('/slug', array(
             'as'   => 'administration.blog.slug',

@@ -39,48 +39,17 @@
     @include('layout.partials.navigation')
     {{-- NAVIGATION --}}
 
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="{{ asset('assets/images/tutelage-unity-small.png') }}" alt="">
-                    <div class="intro-text">
-                        <span class="name">Start Bootstrap</span>
-                        <hr class="star-light">
-                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
-                    </div>
-                </div>
+    {{--
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <img src="{{ asset('assets/images/ts_long.jpg') }}" alt="">
             </div>
         </div>
-    </header>
+    </div>
+    --}}
 
     @yield('content')
-
-    <!-- About Section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>About</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <p>
-                        <a href="http://www.bootstrapzero.com/bootstrap-template/freelancer-one-page-theme">
-                            Built with Freelancer.
-                        </a>
-                    </p>
-                </div>
-                <div class="col-lg-4">
-                    <p>Chat: Kingston Developers Group</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     {{-- FOOTER --}}
     @include('layout.partials.footer')

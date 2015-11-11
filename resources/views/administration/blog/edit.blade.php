@@ -49,20 +49,38 @@
 
 @section('style')
     <link href="{{ asset('assets/plugins/summernote/summernote.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.6.16/summernote-bs3.min.css">
 @stop
 
 @section('script')
     <script src="{{ asset('assets/plugins/summernote/summernote.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/summernote/plugin/summernote-ext-video.js') }}"></script>
+    <script src="{{ asset('assets/plugins/summernote/plugin/summernote-ext-php.js') }}"></script>
+    <script src="{{ asset('assets/plugins/summernote/plugin/summernote-ext-html.js') }}"></script>
+    <script src="{{ asset('assets/plugins/summernote/plugin/summernote-ext-csharp.js') }}"></script>
 
     <script>
 
         // Summernote
         $(document).ready(function() {
             $('#content').summernote({
-                height: 300,
+                height: 500,
                 minHeight: null,
-                maxHeight: null
+                maxHeight: null,
+                toolbar: [
+                    ['style', ['style']],
+                    ['style', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video', 'hr']],
+                    ['codes', ['php', 'html', 'csharp']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']]
+                  ]
             });
         });
     </script>

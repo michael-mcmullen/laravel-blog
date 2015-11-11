@@ -22,7 +22,7 @@ class BlogController extends Controller
      */
     public function listing()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::where('published', true)->orderBy('created_at', 'desc')->get();
 
         return view('blog.listing', [
             'posts' => $posts
@@ -36,7 +36,7 @@ class BlogController extends Controller
     public function view($slug)
     {
         // grab the latest posts
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::where('published', true)->where('slug', $slug)->first();
 
         if(empty($post))
         {

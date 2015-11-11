@@ -19,14 +19,14 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a href="{{ URL::route('blog.listing') }}">Blog</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="#about">About</a>
+                    <a href="{{ URL::route('blog.listing') }}">Full Blog</a>
                 </li>
                 @if(Auth::id())
                     <li class="btn-success">
                         <a href="{{ URL::route('administration.index') }}" class="">Administration</a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::route('auth.logout') }}" class="">Logout</a>
                     </li>
                 @endif
             </ul>

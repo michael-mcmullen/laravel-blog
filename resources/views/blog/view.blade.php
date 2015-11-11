@@ -1,4 +1,4 @@
-@extends('layout.blank')
+@extends('layout.master')
 
 @section('content')
 
@@ -9,8 +9,11 @@
 
                 <h3>
                     {{ $post->title }}
-                    <span class="pull-right"><small>Posted {{ $post->created_at->diffForHumans() }}</small></span>
                 </h3>
+
+                <h6>
+                    Posted {{ date('F d, Y g:i A', strtotime($post->created_at)) }} ({{ $post->created_at->diffForHumans() }})
+                </h6>
 
                 <div class="blog-content">
                     {!! $post->content !!}

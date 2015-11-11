@@ -1,4 +1,4 @@
-@extends('layout.blank')
+@extends('layout.master')
 
 @section('content')
 
@@ -25,6 +25,7 @@
                         <thead>
                             <tr>
                                 <th width="50%">Post Title</th>
+                                <th>Status</th>
                                 <th width="30%">Date Posted</th>
                                 <th>Actions</th>
                             </tr>
@@ -32,12 +33,28 @@
                         <tbody>
                             @foreach($posts as $post)
                                 <tr>
-                                    <td>{{ $post->title }}</td>
-                                    <td>{{ $post->created_at }}</td>
                                     <td>
-                                        <div class="btn-group btn-group-justified">
-                                            <a href="{{ URL::route('administration.blog.delete', $post->id) }}" class="btn btn-danger">Delete</a>
-                                            <a href="{{ URL::route('administration.blog.edit', $post->id) }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ URL::route('blog.view', $post->slug) }}">
+                                            {{ $post->title }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @if($post->published)
+                                            <span class="label label-success"><i class="fa fa-check"></i> Published</span>
+                                        @else
+                                            <span class="label label-warning"><i class="fa fa-minus"></i> Not Published</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ date('F d, Y g:i A', strtotime($post->created_at)) }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-xs btn-group-justified">
+                                            <a href="{{ URL::route('administration.blog.delete', $post->id) }}" class="btn btn-danger" title="Delete this post"><i class="fa fa-trash-o"></i></a>
+                                            @if($post->published)
+                                                <a href="{{ URL::route('administration.blog.unpublish', $post->id) }}" class="btn btn-warning" title="Unpublish this post"><i class="fa fa-minus"></i></a>
+                                            @else
+                                                <a href="{{ URL::route('administration.blog.publish', $post->id) }}" class="btn btn-primary" title="Publish this post"><i class="fa fa-check"></i></a>
+                                            @endif
+                                            <a href="{{ URL::route('administration.blog.edit', $post->id) }}" class="btn btn-success" title="Edit this post"><i class="fa fa-pencil"></i></a>
                                         </div>
                                     </td>
                                 </tr>

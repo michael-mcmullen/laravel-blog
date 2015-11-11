@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         // grab the latest posts
-        $posts = Post::orderBy('created_at', 'desc')->take(5)->get();
+        $posts = Post::where('published', true)->orderBy('created_at', 'desc')->take(5)->get();
 
         return view('home.index', [
             'posts' => $posts

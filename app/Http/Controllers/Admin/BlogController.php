@@ -54,6 +54,36 @@ class BlogController extends Controller
         return Redirect::route('administration.index');
     }
 
+    public function publish($id)
+    {
+        $post = Post::where('id', $id)->first();
+
+        if(empty($post))
+        {
+            return Redirect::route('administration.index');
+        }
+
+        $post->published = true;
+        $post->save();
+
+        return Redirect::route('administration.index');
+    }
+
+    public function unpublish($id)
+    {
+        $post = Post::where('id', $id)->first();
+
+        if(empty($post))
+        {
+            return Redirect::route('administration.index');
+        }
+
+        $post->published = false;
+        $post->save();
+
+        return Redirect::route('administration.index');
+    }
+
     public function edit($id)
     {
         $post = Post::where('id', $id)->first();
@@ -100,10 +130,10 @@ class BlogController extends Controller
     {
         if(! $request->has('slug'))
         {
-            return [
+            return response()->json([
                 'valid' => false,
                 'slug'  => ''
-            ];
+            ]);
         }
 
         // generate the default slug
@@ -120,10 +150,10 @@ class BlogController extends Controller
             $slug .= '-'. ($number + 1);
         }
 
-        return [
+        return response()->json([
                 'valid' => true,
                 'slug'  => $slug
-        ];
+        ]);
     }
 
 }

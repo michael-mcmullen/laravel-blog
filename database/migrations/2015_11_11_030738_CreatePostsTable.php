@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('title');
             $table->longText('content');
+            $table->boolean('published')->default(false);
             $table->timestamps();
         });
     }
