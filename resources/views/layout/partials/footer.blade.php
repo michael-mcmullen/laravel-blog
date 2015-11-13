@@ -18,6 +18,9 @@
                         <li>
                             <a href="https://www.youtube.com/user/tutelagesystems" class="btn-social btn-outline"><i class="fa fa-fw fa-youtube"></i></a>
                         </li>
+                        <li>
+                            <a href="mailto:michael.mcmullen@tutelagesystems.com" class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i></a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-col col-md-4">
