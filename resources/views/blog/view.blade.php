@@ -21,6 +21,9 @@
 
             </div>
         </div>
+        @if(env('DONATION_ENABLED', false))
+            @include('layout.partials.donate')
+        @endif
         @if(env('DISQUS_ENABLED', false))
             @include('layout.partials.disqus')
         @endif

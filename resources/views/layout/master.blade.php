@@ -81,6 +81,10 @@
 
     @yield('script')
 
+    @if(env('GOOGLE_ANALYTICS_ENABLED', false))
+        @include('layout.partials.google-analytics')
+    @endif
+
 </body>
 
 </html>
