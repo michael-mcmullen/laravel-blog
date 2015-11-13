@@ -21,6 +21,9 @@
 
             </div>
         </div>
+        @if(env('DISQUS_ENABLED', false))
+            @include('layout.partials.disqus')
+        @endif
     </div>
 </header>
 
