@@ -63,6 +63,7 @@ class BlogController extends Controller
             return Redirect::route('administration.index');
         }
 
+        $post->created_at = date('Y-m-d H:i:s');
         $post->published = true;
         $post->save();
 
