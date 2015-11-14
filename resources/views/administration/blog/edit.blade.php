@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     <label for="content">Content (html)</label>
-                    <textarea name="content" id="content" cols="30" rows="10">{{ old('content', $post->content) }}</textarea>
+                    <textarea name="content" id="content" cols="30" rows="10">{{ old('content', htmlspecialchars($post->content)) }}</textarea>
                 </div>
 
                 <div class="form-group">
