@@ -34,7 +34,11 @@
                             @foreach($posts as $post)
                                 <tr>
                                     <td>
-                                        <a href="{{ URL::route('blog.view', $post->slug) }}">
+                                        @if($post->published)
+                                            <a href="{{ URL::route('blog.view', $post->slug) }}">
+                                        @else
+                                            <a href="{{ URL::route('administration.blog.edit', $post->id) }}" title="Edit this post">
+                                        @endif
                                             {{ $post->title }}
                                         </a>
                                     </td>
