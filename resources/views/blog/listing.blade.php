@@ -22,7 +22,7 @@
                                 <a href="{{ URL::route('blog.view', $post->slug) }}">
                                     {{ $post->title }}
                                 </a>
-                                <small>{{ date('F d, Y g:i A', strtotime($post->created_at)) }} ({{ $post->created_at->diffForHumans() }})</small>
+                                <small>{{ date('F d, Y g:i A', strtotime($post->published_at)) }} ({{ $post->published_at->diffForHumans() }})</small>
                             </h4>
                             {!! str_limit(strip_tags($post->content, '<p><b>'), 300) !!}
                             <div class="text-right">
