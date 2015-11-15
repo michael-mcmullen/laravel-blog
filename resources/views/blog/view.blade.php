@@ -19,6 +19,18 @@
                     {!! $post->content !!}
                 </div>
 
+                <div class="blog-share">
+                    <h5>
+                        Share:
+                    </h5>
+                    <span class="share-list">
+                        <a href="http://www.facebook.com/sharer.php?u={{ Request::url() }}"><img src="{{ asset('assets/images/facebook-share.png') }}"></a>
+                    </span>
+                    <span class="share-list">
+                        <a href="http://twitter.com/share?url={{ Request::url() }}"><img src="{{ asset('assets/images/twitter-share.png') }}"></a>
+                    </span>
+                </div>
+
                 <div class="blog-tags">
                     <h5>
                         Tags:

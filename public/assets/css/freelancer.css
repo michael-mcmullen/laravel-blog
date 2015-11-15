@@ -478,3 +478,19 @@ section.no-padding{
 .navbar {
     margin-bottom: 0px !important;
 }
+
+.blog-share {
+    border-top: 2px dotted #f0f0f0;
+    padding: 5px 0px;
+    margin-top: 8px;
+}
+
+.share-list {
+    padding-left: 8px;
+}
+
+.blog-tags {
+    border-top: 2px dotted #f0f0f0;
+    padding: 5px 0px;
+    margin-top: 8px;
+}
