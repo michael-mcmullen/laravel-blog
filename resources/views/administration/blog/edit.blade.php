@@ -32,6 +32,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="categories">Categories</label>
+                    <select name="categories[]" id="categories" class="form-control" multiple>
+                        @foreach($categories as $category)
+                            @if($post->categories->contains($category->id))
+                                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                            @else
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="content">Content (html)</label>
                     <textarea name="content" id="content" cols="30" rows="10">{{ old('content', htmlspecialchars($post->content)) }}</textarea>
                 </div>

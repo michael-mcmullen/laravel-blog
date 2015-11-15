@@ -12,11 +12,20 @@
                 </h3>
 
                 <h6>
-                    Posted {{ date('F d, Y g:i A', strtotime($post->created_at)) }} ({{ $post->created_at->diffForHumans() }})
+                    Posted {{ date('F d, Y g:i A', strtotime($post->published_at)) }} ({{ $post->published_at->diffForHumans() }})
                 </h6>
 
                 <div class="blog-content">
                     {!! $post->content !!}
+                </div>
+
+                <div class="blog-tags">
+                    <h5>
+                        Tags:
+                    </h5>
+                    @foreach($post->categories as $idx => $category)
+                        {{ $category->name }} @if($idx != (count($post->categories) - 1 )) | @endif
+                    @endforeach
                 </div>
 
             </div>

@@ -4,23 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Category extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'posts';
+    protected $table = 'categories';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['slug', 'title', 'content'];
-
-    protected $dates = ['published_at'];
+    protected $fillable = ['name'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -28,9 +26,4 @@ class Post extends Model
      * @var array
      */
     protected $hidden = [];
-
-    public function categories()
-    {
-        return $this->belongsToMany(\App\Category::class)->withTimestamps();
-    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Redirect;
 
+use App\Category;
 use App\Post;
 
 class BlogController extends Controller
@@ -18,7 +19,11 @@ class BlogController extends Controller
 
     public function add()
     {
-        return view('administration.blog.add');
+        $categories = Category::orderBy('name')->get();
+
+        return view('administration.blog.add', [
+            'categories' => $categories
+        ]);
     }
 
     public function insert(Request $request)
@@ -31,11 +36,17 @@ class BlogController extends Controller
 
         $this->validate($request, $rules, ['content.min' => 'The content must be filled in']);
 
-        Post::create([
+        $post = Post::create([
             'title'   => $request->input('title'),
             'slug'    => $request->input('slug'),
             'content' => $request->input('content'),
         ]);
+
+        // save the categories
+        if($request->has('categories'))
+        {
+            $post->categories()->sync($request->input('categories'));
+        }
 
         return Redirect::route('administration.index');
     }
@@ -63,8 +74,8 @@ class BlogController extends Controller
             return Redirect::route('administration.index');
         }
 
-        $post->created_at = date('Y-m-d H:i:s');
-        $post->published = true;
+        $post->published    = true;
+        $post->published_at = date('Y-m-d H:i:s');
         $post->save();
 
         return Redirect::route('administration.index');
@@ -87,7 +98,8 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        $post = Post::where('id', $id)->first();
+        $post       = Post::where('id', $id)->first();
+        $categories = Category::orderBy('name')->get();
 
         if(empty($post))
         {
@@ -95,7 +107,8 @@ class BlogController extends Controller
         }
 
         return view('administration.blog.edit', [
-            'post' => $post
+            'post'       => $post,
+            'categories' => $categories
         ]);
     }
 
@@ -118,6 +131,12 @@ class BlogController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->save();
+
+        // save the categories
+        if($request->has('categories'))
+        {
+            $post->categories()->sync($request->input('categories'));
+        }
 
         return Redirect::route('administration.index');
     }

@@ -57,7 +57,10 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td>{{ date('F d, Y g:i A', strtotime($post->created_at)) }}</td>
+                                    <td>
+                                        @if($post->published)
+                                            {{ date('F d, Y g:i A', strtotime($post->published_at)) }}</td>
+                                        @endif
                                     <td>
                                         <div class="btn-group btn-group-xs btn-group-justified">
                                             @if(! $post->published)

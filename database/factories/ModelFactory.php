@@ -27,3 +27,9 @@ $factory->define(App\Post::class, function(Faker\Generator $faker){
         'content' => $faker->text(60),
     ];
 });
+
+$factory->define(App\Category::class, function(Faker\Generator $faker){
+    return [
+        'name' => $faker->firstName()
+    ];
+});

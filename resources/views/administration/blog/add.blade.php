@@ -26,8 +26,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="slug">Slug</label>
+                    <label for="slug">Slug (read only)</label>
                     <input type="text" id="slug" name="slug" class="form-control" value="" v-model="blogSlug" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="categories">Categories</label>
+                    <select name="categories[]" id="categories" class="form-control" multiple>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
