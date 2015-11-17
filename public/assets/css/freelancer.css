@@ -494,3 +494,9 @@ section.no-padding{
     padding: 5px 0px;
     margin-top: 8px;
 }
+
+.read-more {
+    display: block;
+    padding-top: 16px;
+    font-size: 20px;
+}

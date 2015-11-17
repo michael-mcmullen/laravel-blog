@@ -23,9 +23,9 @@
                                 <small>{{ date('F d, Y g:i A', strtotime($post->published_at)) }} ({{ $post->published_at->diffForHumans() }})</small>
                             </h4>
                             {!! str_limit(strip_tags($post->content, '<p><b>'), 300) !!}
-                            <div class="text-right">
-                                <a href="{{ URL::route('blog.view', $post->slug) }}">
-                                    read more ...
+                            <div>
+                                <a href="{{ URL::route('blog.view', $post->slug) }}" class="read-more">
+                                    read more <i class="fa fa-arrow-circle-o-right"></i>
                                 </a>
                             </div>
                         </div>
