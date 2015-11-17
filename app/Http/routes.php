@@ -18,6 +18,14 @@ Route::group(['prefix' => 'blog'], function() {
     );
 });
 
+// RSS
+Route::group(['prefix' => 'rss'], function() {
+    Route::get('/.atom', array(
+        'as'   => 'rss',
+        'uses' => 'RssController@index')
+    );
+});
+
 // Administration
 Route::group(['prefix' => 'administration'], function() {
     Route::get('/', array(

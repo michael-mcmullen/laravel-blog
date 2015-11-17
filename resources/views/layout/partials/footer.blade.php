@@ -2,7 +2,7 @@
     <div class="footer-above">
         <div class="container">
             <div class="row">
-                <div class="footer-col col-md-4">
+                <div class="footer-col col-md-2">
                     <h3>Location</h3>
                     <p>Kingston<br>Ontario, Canada</p>
                 </div>
@@ -23,9 +23,15 @@
                         </li>
                     </ul>
                 </div>
-                <div class="footer-col col-md-4">
-                    <h3>About Tutelage Systems</h3>
-                    <p>Tutelage Systems is a web development company that strives to bring you the best user experience possible.</p>
+                <div class="footer-col col-md-3">
+                    <h3>Like what you're reading?</h3>
+                    <p>
+                        Follow me on twitter <a href="https://twitter.com/tutelagesystems">@tutelagesystems</a>
+                    </p>
+                </div>
+                <div class="footer-col col-md-3">
+                    <h3>Subscribe</h3>
+                    <a href="{{ URL::route('rss') }}" class="btn-social btn-outline"><i class="fa fa-fw fa-rss"></i></a>
                 </div>
             </div>
         </div>

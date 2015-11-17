@@ -4,22 +4,25 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Redirect;
 
 use App\Post;
 
-class HomeController extends Controller
+class RssController extends Controller
 {
 
     public function __construct()
     {
     }
 
+    /**
+     * shows an rss feed
+     */
     public function index()
     {
-        // grab the latest posts
-        $posts = Post::where('published', true)->orderBy('created_at', 'desc')->take(5)->get();
+        $posts = Post::where('published', true)->orderBy('created_at', 'desc')->get();
 
-        return view('home.index', [
+        return view('rss.default', [
             'posts' => $posts
         ]);
     }

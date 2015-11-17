@@ -8,8 +8,6 @@ use Redirect;
 
 use App\Post;
 
-// Only do tree view for now
-
 class BlogController extends Controller
 {
 
