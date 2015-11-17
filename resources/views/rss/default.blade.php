@@ -10,20 +10,20 @@
         <email>michael.mcmullen@tutelagesystems.com</email>
     </author>
 
-    <entry>
     @foreach($posts as $post)
-        <id>{{ URL::route('blog.view', $post->slug) }}</id>
-        <link type="text/html" rel="alternate" href="{{ URL::route('blog.view', $post->slug) }}" />
-        <title>{{ $post->title }}</title>
-        <published>{{ $post->published_at }}</published>
-        <updated>{{ $post->published_at }}</updated>
-        <author>
-            <name>Michael McMullen</name>
-            <uri>{{ URL::route('home') }}</uri>
-        </author>
-        <content type="html"><![CDATA[
-            {!! $post->content !!}
-        ]]></content>
+        <entry>
+            <id>{{ URL::route('blog.view', $post->slug) }}</id>
+            <link type="text/html" rel="alternate" href="{{ URL::route('blog.view', $post->slug) }}" />
+            <title>{{ $post->title }}</title>
+            <published>{{ $post->published_at }}</published>
+            <updated>{{ $post->published_at }}</updated>
+            <author>
+                <name>Michael McMullen</name>
+                <uri>{{ URL::route('home') }}</uri>
+            </author>
+            <content type="html"><![CDATA[
+                {!! $post->content !!}
+            ]]></content>
+        </entry>
     @endforeach
-    </entry>
 </feed>
