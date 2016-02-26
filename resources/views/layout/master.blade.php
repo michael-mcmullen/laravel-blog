@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <meta property="og:url"           content="{{ Request::url() }}" />
-    <meta property="og:type"          content="website" />
+    <meta property="og:url" content="{{ Request::url() }}" />
+    <meta property="og:type" content="website" />
 
     <title>{{ env('SITE_NAME', 'Setup in .ENV') }}</title>
 
