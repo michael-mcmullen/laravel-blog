@@ -7,31 +7,65 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Recent Blog Posts</h2>
+                    <h2>Most Recent Post</h2>
                     <hr class="star-primary">
                 </div>
             </div>
 
             @foreach($posts as $post)
-                <div style="border-bottom: 1px solid #f1f1f1;">
+                <header class="blog-post">
                     <div class="row">
-                        <div class="col-sm-12 padding-bottom-20">
-                            <h4>
-                                <a href="{{ URL::route('blog.view', $post->slug) }}">
-                                    {{ $post->title }}
-                                </a>
-                                <small>{{ date('F d, Y g:i A', strtotime($post->published_at)) }} ({{ $post->published_at->diffForHumans() }})</small>
-                            </h4>
-                            {!! str_limit(strip_tags($post->content, '<br>'), 300) !!}
-                            <div>
-                                <a href="{{ URL::route('blog.view', $post->slug) }}" class="read-more">
-                                    read more <i class="fa fa-arrow-circle-o-right"></i>
-                                </a>
+                        <div class="col-lg-12">
+                            <h3>
+                                {{ $post->title }}
+                            </h3>
+
+                            <h6>
+                                Posted {{ date('F d, Y g:i A', strtotime($post->published_at)) }} ({{ $post->published_at->diffForHumans() }})
+                            </h6>
+
+                            <div class="blog-content">
+                                {!! $post->content !!}
                             </div>
-                        </div>
+
+                            <div class="blog-share">
+                                <h5>
+                                    Share:
+                                </h5>
+                                <span class="share-list">
+                                    <a href="http://www.facebook.com/sharer.php?u={{ Request::url() }}"><img src="{{ asset('assets/images/facebook-share.png') }}"></a>
+                                </span>
+                                <span class="share-list">
+                                    <a href="http://twitter.com/share?url={{ Request::url() }}"><img src="{{ asset('assets/images/twitter-share.png') }}"></a>
+                                </span>
+                            </div>
+
+                            <div class="blog-tags">
+                                <h5>
+                                    Tags:
+                                </h5>
+                                @if($post->categories->count() > 0)
+                                    @foreach($post->categories as $idx => $category)
+                                        {{ $category->name }} @if($idx != (count($post->categories) - 1 )) | @endif
+                                    @endforeach
+                                @else
+                                    <div class="alert alert-custom">
+                                        <h4>Sorry</h4>
+                                        There are no tags for this post
+                                    </div>
+                                @endif
+                            </div>
+
+                            @if(env('DISQUS_ENABLED', false))
+                                <div>
+                                    <a href="{{ route('blog.view', $post->slug) }}" class="btn btn-primary"><i class="fa fa-comments"></i> Add Comment</a>
+                                </div>
+                            @endif
+
                     </div>
                 </div>
-            @endforeach
+        </header>
+        @endforeach
 
         </div>
     </section>
@@ -41,14 +75,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Want to see more entries?</h2>
+                <h2>There is tons more to read</h2>
                 <hr class="star-primary">
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
                 <p>
-                    <a href="{{ URL::route('blog.listing') }}">View All Blog Posts</a>
+                    <a href="{{ URL::route('blog.listing') }}">Check out more entries</a>
                 </p>
             </div>
         </div>
